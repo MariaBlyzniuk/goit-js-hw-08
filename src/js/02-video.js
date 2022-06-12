@@ -7,12 +7,12 @@ const player = new Player(iframe);
 player.on('timeupdate', throttle(onPlay, 1000));
 
 function onPlay(e) {
-    if (playerSet) {
-        localStorage.setItem('videoplayer-current-time', e.seconds);
-    } else {
-        null
-    }
-    
+    // if (playerSet) {
+    //     localStorage.setItem('videoplayer-current-time', e.seconds);
+    // } else {
+    //     null
+    // }
+    localStorage.setItem('videoplayer-current-time', e.seconds);
 };
 const playerSet = localStorage.getItem('videoplayer-current-time');
 
