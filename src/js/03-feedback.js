@@ -7,7 +7,7 @@ const formRef = document.querySelector('.feedback-form');
 
 formRef.addEventListener('submit', onFormSabmit);
 formRef.addEventListener('input', throttle(onFormData, 500));
-
+populateForm();
 
 let formData = {
   email: email.value,
@@ -32,15 +32,19 @@ function onFormSabmit(e) {
     e.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
 
-    console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
+  // console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
+  console.log(formData);
     
 };
-
-if (localStorage.getItem('feedback-form-state') !== null) {
+function populateForm() {
+  if (localStorage.getItem('feedback-form-state')) {
   const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
   email.value = data.email;
   message.value = data.message;
 
 }
+}
+
+
 
